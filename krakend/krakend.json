@@ -1,0 +1,55 @@
+{
+  "$schema": "https://www.krakend.io/schema/v3.json",
+  "version": 3,
+  "name": "KrakenD - API Gateway",
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "output_encoding": "json",
+  "endpoints": [
+    {
+      "endpoint": "/v1/endpoint1",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "string",
+          "sd": "static",
+          "method": "GET",
+          "disable_host_sanitize": false,
+          "host": ["http://endpoint1:3001"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/v1/endpoint2",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "string",
+          "sd": "static",
+          "method": "GET",
+          "host": ["http://endpoint2:3002"],
+          "disable_host_sanitize": false
+        }
+      ]
+    },
+    {
+      "endpoint": "/v1/endpoint3",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "string",
+          "sd": "static",
+          "method": "GET",
+          "host": ["http://endpoint3:3003"],
+          "disable_host_sanitize": false
+        }
+      ]
+    }
+  ]
+}
